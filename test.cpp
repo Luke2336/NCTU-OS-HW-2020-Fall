@@ -1,10 +1,10 @@
-void SelectionSort (vector<int> &a) {
-    int n = a.size();
-    for (int i = 0; i < n - 1; i++) {
-        int p = i;
-        for (int j = i + 1; j < n; j++) {
-            if (a[j] < a[p]) p = j;
-        }
-        Swap(a[i], a[p]);
-    }
+void CountingSort(vector<int> &a) {
+    // 假設序列中的數字範圍為0-99
+    int cnt[100] = {0};
+    for (int i = 0; i < a.size(); i++)
+        cnt[a[i]]++;
+    a.clear();
+    for (int i = 0; i < 100; i++)
+        for (int j = 0; j < cnt[i]; j++)
+            a.push_back(i);
 }

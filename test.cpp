@@ -3,6 +3,14 @@ using namespace std;
 #define maxn 8
 int a[maxn] = {22, 8, 10, 21, 18, 17, 29, 1};
 int tmp[maxn];
+void MergeSort(int, int);
+int main() {
+    MergeSort(0, 8);
+    for (int i = 0; i < 8; i++)
+        cout << a[i] << " ";
+    return 0;
+}
+
 void MergeSort(int L, int R) {
     if(R - L <= 1) return;
     int mid = L + (R - L) / 2;
@@ -21,10 +29,4 @@ void MergeSort(int L, int R) {
     }
     for(int i = L; i < R; i++)
         a[i] = tmp[i];
-}
-int main() {
-    MergeSort(0, 8);
-    for (int i = 0; i < 8; i++)
-        cout << a[i] << " ";
-    return 0;
 }

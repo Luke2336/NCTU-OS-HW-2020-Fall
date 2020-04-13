@@ -1,32 +1,14 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define maxn 8
-int a[maxn] = {22, 8, 10, 21, 18, 17, 29, 1};
-int tmp[maxn];
-void MergeSort(int, int);
-int main() {
-    MergeSort(0, 8);
-    for (int i = 0; i < 8; i++)
-        cout << a[i] << " ";
-    return 0;
-}
-
-void MergeSort(int L, int R) {
-    if(R - L <= 1) return;
+bool BinarySearch(int a[], int L, int R, int x) {
+    if (L + 1 >= R) return false;
     int mid = L + (R - L) / 2;
-    MergeSort(L, mid);
-    MergeSort(mid, R);
-    int p1 = L, p2 = mid;
-    for(int i = L; i < R; i++) {
-        if (p1 >= mid)
-            tmp[i] = a[p2++];
-        else if (p2 >= R)
-            tmp[i] = a[p1++];
-        else if (a[p1] < a[p2])
-            tmp[i] = a[p1++];
-        else
-            tmp[i] = a[p2++];
-    }
-    for(int i = L; i < R; i++)
-        a[i] = tmp[i];
+    if (a[mid] == x) return true;
+    if (a[mid] < x) return BinarySearch(a, L, mid, x);
+    return BinarySearch(a, mid + 1, R, x);
+}
+int main() {
+    int x = 7;
+    int a[10] = {1, 7, 9, 10, 16, 17, 18, 20, 21, 25};
+    if (BinarySearch(a, 0, 10, x)) printf("Find %d\n",x);
+    else printf("Can't find %d\n",x);
+    return 0;
 }

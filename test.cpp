@@ -1,14 +1,29 @@
-bool BinarySearch(int a[], int L, int R, int x) {
-    if (L + 1 >= R) return false;
-    int mid = L + (R - L) / 2;
-    if (a[mid] == x) return true;
-    if (a[mid] < x) return BinarySearch(a, L, mid, x);
-    return BinarySearch(a, mid + 1, R, x);
+#include<bits/stdc++.h>
+using namespace std;
+#define maxn 100
+int QuickSelect(int *A, int n, int k) {
+  if (n == 1) return A[0];
+  int p = A[rand() % n]; // random pivot
+  int sz_L = 0;
+  for (int i = 0; i < n; i++) {
+    if (A[i] <= p) { //swap A[i] to the back of L
+      int tmp = A[i];
+      A[i] = A[sz_L];
+      A[sz_L] = tmp;
+      sz_L++;
+    }
+  }
+  if (sz_L >= k)
+    return QuickSelect(A, sz_L, k);
+  else
+    return QuickSelect(A + sz_L, n - sz_L, k - sz_L);
 }
 int main() {
-    int x = 7;
-    int a[10] = {1, 7, 9, 10, 16, 17, 18, 20, 21, 25};
-    if (BinarySearch(a, 0, 10, x)) printf("Find %d\n",x);
-    else printf("Can't find %d\n",x);
-    return 0;
+  srand(time(0)); // initialize random seed
+  int n, k;
+  int A[maxn];
+  cin >> n >> k;
+  for (int i = 0; i < n; i++) cin >> A[i];
+  cout << QuickSelect(A, n, k) << "\n";
+  return 0;
 }

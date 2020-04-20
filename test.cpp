@@ -1,29 +1,12 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define maxn 100
-int QuickSelect(int *A, int n, int k) {
-  if (n == 1) return A[0];
-  int p = A[rand() % n]; // random pivot
-  int sz_L = 0;
-  for (int i = 0; i < n; i++) {
-    if (A[i] <= p) { //swap A[i] to the back of L
-      int tmp = A[i];
-      A[i] = A[sz_L];
-      A[sz_L] = tmp;
-      sz_L++;
+// a ^ x % m
+int pow(int a, int x, int m) {
+    int tmp = a % m;
+    int ans = 1;
+    while (x > 0) {
+        if (x & 1)
+            ans = ans * tmp % m;
+        tmp = tmp * tmp % m;
+        x >>= 1; // x /= 2;
     }
-  }
-  if (sz_L >= k)
-    return QuickSelect(A, sz_L, k);
-  else
-    return QuickSelect(A + sz_L, n - sz_L, k - sz_L);
-}
-int main() {
-  srand(time(0)); // initialize random seed
-  int n, k;
-  int A[maxn];
-  cin >> n >> k;
-  for (int i = 0; i < n; i++) cin >> A[i];
-  cout << QuickSelect(A, n, k) << "\n";
-  return 0;
+    return ans;
 }

@@ -1,14 +1,20 @@
-class student {
-private:
-    string name;
-public:
-    int id;
-    // constructer
-    student() {}
-    student(int _id, string _name) {
-        id = _id, name = _name;
+struct point {
+    double x, y;
+    return dis2 (point p) {
+        return (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y);
     }
-    // method
-    string getName() {return name;}
-    int getId() {return id;}
+};
+struct circle{
+    point c;
+    double r;
+    circle() {}
+    circle(point _p, int _r) {
+        c = _p, r = _r;
+    }
+    double getArea() {
+        return r * r * acos(-1.0);
+    }
+    bool inCircle(point p) {
+        return c.dis2(p) <= r * r;
+    }
 };

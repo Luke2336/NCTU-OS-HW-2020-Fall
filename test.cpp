@@ -1,20 +1,17 @@
-struct point {
-    double x, y;
-    return dis2 (point p) {
-        return (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y);
-    }
-};
-struct circle{
-    point c;
-    double r;
-    circle() {}
-    circle(point _p, int _r) {
-        c = _p, r = _r;
-    }
-    double getArea() {
-        return r * r * acos(-1.0);
-    }
-    bool inCircle(point p) {
-        return c.dis2(p) <= r * r;
-    }
-};
+#define SIZE 10000
+int st[SIZE];
+int sz = 0;
+bool empty() {
+    return sz <= 0;
+}
+void push(int x) {
+    st[sz] = x;
+    sz++;
+}
+void pop() {
+    if (!empty()) sz--;
+}
+int top() {
+    if (!empty()) return st[sz - 1];
+    return -1;
+}

@@ -1,12 +1,14 @@
-// a ^ x % m
-int pow(int a, int x, int m) {
-    int tmp = a % m;
-    int ans = 1;
-    while (x > 0) {
-        if (x & 1)
-            ans = ans * tmp % m;
-        tmp = tmp * tmp % m;
-        x >>= 1; // x /= 2;
+class student {
+private:
+    string name;
+public:
+    int id;
+    // constructer
+    student() {}
+    student(int _id, string _name) {
+        id = _id, name = _name;
     }
-    return ans;
-}
+    // method
+    string getName() {return name;}
+    int getId() {return id;}
+};

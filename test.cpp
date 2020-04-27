@@ -1,6 +1,7 @@
-#include <stack>
-stack<int> st;
-st.push(1);
-st.pop();
-int a = st.top();
-bool empty = st.empty();
+#include <queue>
+queue<int> q;
+q.push(10);
+q.pop();
+int b = q.back();
+int f = q.front();
+bool empty = q.empty();

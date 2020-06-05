@@ -1,27 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define maxn 500
+#define INF 2000000000
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<int> in(n);
-    vector<vector<int>> G(m);
-    for (int i = 0; i < m; i++) {
-        int a, b; // a points to b
-        cin >> a >> b; // [0, n-1]
-        G[a].push_back(b);
-        in[b]++;
-    }
-    queue<int> q; // in-deg = 0 的點
-    for (int i = 0; i < n; i++)
-        if (!in[i]) q.push(i);
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        cout << u << " ";
-        for (int uu: G[u]) {
-            in[uu]--;
-            if(!in[uu]) q.push(uu);
-        }
-    }
-    return 0;
+  int n;
+  cin >> n;
+  int r[maxn], c[maxn];
+  for (int i = 0; i < n; ++i)
+    cin >> r[i] >> c[i];
+  int dp[maxn][maxn];
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      dp[i][j] = (i == j) ? 0 : INF;
+  for (int i = 1; i < n; i++)
+    for (int l = 0; r = i; r < n; l++, r++)
+      for (int p = l; p < r; p++)
+        dp[i][j] = min(dp[i][j], dp[i][p] + dp[p + 1][r]);
+  cout << dp[0][n - 1] << endl;
+  return 0;
 }

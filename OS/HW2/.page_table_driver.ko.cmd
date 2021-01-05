@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.ko /home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.o /home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.mod.o;  true

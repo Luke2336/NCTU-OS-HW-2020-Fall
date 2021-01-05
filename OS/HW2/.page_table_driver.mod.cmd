@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.mod := { echo  /home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.o; echo; } > /home/user/Desktop/SchoolProject/OS/HW2/page_table_driver.mod

@@ -11,20 +11,9 @@ int *ptr;
 int main () {
     int id;
 
-    /************************* TODO 1 *************************/
-    // Create a shared memory section
-    /************************* TODO 1 *************************/
+    id = shmget((key_t)1, sizeof(int*), IPC_CREAT|0666);
 
-    /************************* TODO 2 *************************/
-    // Attach the memory section
-    // the return value is a pointer to the shared memory section
-    /************************* TODO 2 *************************/
-
-    int shm_id = shmget((key_t)1, sizeof(int*), IPC_CREAT|0666);
-
-	printf("shm_id = %d\n", shm_id);
-
-    ptr = (int*) shmat(shm_id, 0, 0);
+    ptr = (int*) shmat(id, 0, 0);
 
     ptr[0] = 0;
     printf("\033[1;32m[server] The value is %d\033[0m\n", ptr[0]);

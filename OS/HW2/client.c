@@ -10,14 +10,18 @@ int *ptr;
 
 int main () {
     int id;
-
     /************************* TODO 1 *************************/
     // Attach the memory section, the return value is a pointer to 
     // the shared memory section
     /************************* TODO 1 *************************/
 
-    int shm_id = shmget((key_t)1, 0, IPC_CREAT|0666)
+    int shm_id = shmget((key_t)1, sizeof(int*), 0);
+	
+	printf("shm_id = %d\n", shm_id);
 
+	if (shm_id == -1)
+		printf("error!\n");	
+	
     ptr = (int*) shmat(shm_id, 0, 0);
 
     printf("\033[1;33m[client] The value is %d\033[0m\n", ptr[0]);

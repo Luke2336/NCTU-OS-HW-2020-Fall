@@ -20,7 +20,9 @@ int main () {
     // the return value is a pointer to the shared memory section
     /************************* TODO 2 *************************/
 
-    int shm_id = shmget((key_t)0, sizeof(int*), IPC_CREAT|0666)
+    int shm_id = shmget((key_t)1, sizeof(int*), IPC_CREAT|0666);
+
+	printf("shm_id = %d\n", shm_id);
 
     ptr = (int*) shmat(shm_id, 0, 0);
 

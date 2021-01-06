@@ -20,6 +20,10 @@ int main () {
     // the return value is a pointer to the shared memory section
     /************************* TODO 2 *************************/
 
+    int shm_id = shmget((key_t)0, sizeof(int*), IPC_CREAT|0666)
+
+    ptr = (int*) shmat(shm_id, 0, 0);
+
     ptr[0] = 0;
     printf("\033[1;32m[server] The value is %d\033[0m\n", ptr[0]);
 

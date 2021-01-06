@@ -16,6 +16,10 @@ int main () {
     // the shared memory section
     /************************* TODO 1 *************************/
 
+    int shm_id = shmget((key_t)1, 0, IPC_CREAT|0666)
+
+    ptr = (int*) shmat(shm_id, 0, 0);
+
     printf("\033[1;33m[client] The value is %d\033[0m\n", ptr[0]);
 
     while(1) {

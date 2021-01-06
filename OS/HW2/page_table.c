@@ -63,6 +63,7 @@ int main()
 	// ------------------------------------------------
 	// Modify page table entry of y
 	// Let y point to x's physical address
+	uint64_t cr3 = get_cr3_value();
 	// ------------------------------------------------
 
 	getchar();

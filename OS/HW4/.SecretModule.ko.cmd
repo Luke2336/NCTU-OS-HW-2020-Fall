@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/SchoolProject/OS/HW4/SecretModule.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/user/Desktop/SchoolProject/OS/HW4/SecretModule.ko /home/user/Desktop/SchoolProject/OS/HW4/SecretModule.o /home/user/Desktop/SchoolProject/OS/HW4/SecretModule.mod.o;  true
